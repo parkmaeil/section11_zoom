@@ -17,13 +17,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema inflean_restful
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `inflean_restful` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `inflean_restful` ;
+CREATE SCHEMA IF NOT EXISTS `restful` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `restful` ;
 
 -- -----------------------------------------------------
 -- Table `inflean_restful`.`customer`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inflean_restful`.`customer` (
+CREATE TABLE IF NOT EXISTS `restful`.`customer` (
   `customer_id` VARCHAR(50) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
   `customer_name` VARCHAR(100) NOT NULL,
@@ -40,7 +40,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `inflean_restful`.`product`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inflean_restful`.`product` (
+CREATE TABLE IF NOT EXISTS `restful`.`product` (
   `product_number` INT NOT NULL AUTO_INCREMENT,
   `product_name` VARCHAR(100) NULL DEFAULT NULL,
   `inventory` INT NULL DEFAULT NULL,
@@ -56,7 +56,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `inflean_restful`.`customer_product`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inflean_restful`.`customer_product` (
+CREATE TABLE IF NOT EXISTS `restful`.`customer_product` (
   `order_number` INT NOT NULL AUTO_INCREMENT,
   `customer_id` VARCHAR(50) NULL DEFAULT NULL,
   `product_number` INT NULL DEFAULT NULL,
@@ -67,10 +67,10 @@ CREATE TABLE IF NOT EXISTS `inflean_restful`.`customer_product` (
   INDEX `product_number` (`product_number` ASC) VISIBLE,
   CONSTRAINT `customer_product_ibfk_1`
     FOREIGN KEY (`customer_id`)
-    REFERENCES `inflean_restful`.`customer` (`customer_id`),
+    REFERENCES `restful`.`customer` (`customer_id`),
   CONSTRAINT `customer_product_ibfk_2`
     FOREIGN KEY (`product_number`)
-    REFERENCES `inflean_restful`.`product` (`product_number`))
+    REFERENCES `restful`.`product` (`product_number`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 57
 DEFAULT CHARACTER SET = utf8mb4

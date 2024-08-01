@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${cpath}/resources/css/style.css">
-<script src="${cpath}/resources/js/script.js"></script>
+<script src="${cpath}/resources/js/update.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -36,7 +36,26 @@
                    </div>
                </div>
             </div>
-            <div class="card-body">${cpath}</div>
+            <div class="card-body">
+            <h5>제품 수정하기</h5>
+                        <form>
+                             <div class="form-group">
+                               <label for="product_name">제품명:</label>
+                               <input type="text" class="form-control" placeholder="Enter 제품명" id="product_name" value="${product.product_name}">
+                             </div>
+                             <div class="form-group">
+                               <label for="inventory">재고량:</label>
+                               <input type="text" class="form-control" placeholder="Enter 재고량" id="inventory" value="${product.inventory}">
+                             </div>
+                             <div class="form-group">
+                               <label for="price">가격:</label>
+                               <input type="text" class="form-control" placeholder="Enter 가격" id="price" value="${product.price}">
+                             </div>
+                             <button type="button" class="btn btn-primary btn-sm" onclick="goSubmit(${product.product_number})">수정</button>
+                             <button type="reset" class="btn btn-primary btn-sm">취소</button>
+                             <button type="button" class="btn btn-primary btn-sm" onclick="location.href='${cpath}/list'">목록</button>
+                        </form>
+            </div>
             <div class="card-footer">Spring기반 RESTful API SOA 서비스 개발_박매일</div>
         </div>
     </div>

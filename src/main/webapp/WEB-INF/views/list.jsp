@@ -11,11 +11,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${cpath}/resources/css/style.css">
-<script src="${cpath}/resources/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="${cpath}/resources/js/list.js"></script>
+<script>
+   // ajax 통신을 시도 ->  외부 javascript로 빼기(list.js)
+   restProductList();
+</script>
 </head>
 <body>
 
@@ -36,7 +39,24 @@
                    </div>
                </div>
             </div>
-            <div class="card-body">${cpath}</div>
+            <div class="card-body">
+                <h5>제품리스트</h5>
+                <table id="productList" class="table table-bordered table-hover">
+                    <thead>
+                       <tr>
+                         <th>제품번호</th>
+                         <th>제품이름</th>
+                         <th>재고량</th>
+                         <th>가격</th>
+                         <th>제조사</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                      <!-- 여기에 REST에서 가져온 제품리스트를 동적으로 출력하는 부분-->
+                    </tbody>
+                </table>
+                <button class="btn btn-sm btn-primary" onclick="location.href='${cpath}/register'">등록</button>
+            </div>
             <div class="card-footer">Spring기반 RESTful API SOA 서비스 개발_박매일</div>
         </div>
     </div>
