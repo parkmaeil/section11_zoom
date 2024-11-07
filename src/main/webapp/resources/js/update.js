@@ -1,5 +1,5 @@
 function goUpdate(product_number){
-    location.href="/restful/update/"+product_number;
+    location.href="/s11/update/"+product_number;
 }
 
 function goSubmit(product_number){
@@ -14,7 +14,7 @@ function goSubmit(product_number){
        price : price
     };
       // PUT  :  http://localhost:8081/restful/api/products/{id}
-     fetch("http://localhost:8081/restful/api/products/"+product_number, {
+     fetch("http://localhost:8081/s11/api/products/"+product_number, {
          method : "PUT",
          headers : {
              "Content-Type" : "application/json;charset=UTF-8"
@@ -25,7 +25,7 @@ function goSubmit(product_number){
            if(!response.ok){
                throw new Error("Network response was not ok");
            }
-           location.href="/restful/list";
+           location.href="/s11/list";
        })
      .catch(function(error){
           console.log("error", error);

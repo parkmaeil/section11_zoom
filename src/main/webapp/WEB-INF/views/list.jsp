@@ -17,7 +17,8 @@
 <script src="${cpath}/resources/js/list.js"></script>
 <script>
    // ajax 통신을 시도 ->  외부 javascript로 빼기(list.js)
-   restProductList();
+   // restProductList();
+   restProductListPaging("${cri.page}","${cri.size}");
 </script>
 </head>
 <body>
@@ -41,6 +42,12 @@
             </div>
             <div class="card-body">
                 <h5>제품리스트</h5>
+                 <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Search" id="keyword">
+                                <div class="input-group-append">
+                                  <button class="btn btn-success" type="button" onclick="goSearch()">Go</button>
+                                </div>
+                   </div>
                 <table id="productList" class="table table-bordered table-hover">
                     <thead>
                        <tr>
@@ -51,10 +58,13 @@
                          <th>제조사</th>
                        </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="pList">
                       <!-- 여기에 REST에서 가져온 제품리스트를 동적으로 출력하는 부분-->
                     </tbody>
                 </table>
+                 <!-- 페이징 처리 하는 부분 -->
+                 <ul class="pagination justify-content-center"></ul>
+
                 <button class="btn btn-sm btn-primary" onclick="location.href='${cpath}/register'">등록</button>
             </div>
             <div class="card-footer">Spring기반 RESTful API SOA 서비스 개발_박매일</div>

@@ -27,4 +27,26 @@
         price=#{price}
         where product_number=#{product_number}
     </update>
+
+    <select id="search" resultType="com.example.entity.Product">
+        select * from product
+        where product_name like concat('%', #{keyword},'%')
+    </select>
+
+    <update id="updateInventory" >
+        update product
+        set  inventory=#{inventory}
+        where product_number=#{productNumber}
+    </update>
+
+    <select id="pageList" parameterType="com.example.entity.Criteria"
+            resultType="com.example.entity.Product">
+        select * from product
+        limit #{pageStart}, #{size}
+    </select>
+
+    <select id="totalCount" resultType="int">
+        select count(*) from product
+    </select>
+
 </mapper>

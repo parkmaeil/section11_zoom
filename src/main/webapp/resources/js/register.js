@@ -11,7 +11,7 @@ function goRegister(){
           "manufacturer"  : manufacturer
          };
        // POST : http://localhost:8081/restful/api/products [제품등록하기]
-        fetch("http://localhost:8081/restful/api/products", {
+        fetch("http://localhost:8081/s11/api/products", {
               method : "POST",
               headers :{
                   "Content-Type" : "application/json"
@@ -22,7 +22,7 @@ function goRegister(){
              if(!response.ok){
                  throw new Error("Network response was not ok");
              }
-             location.href="/restful/list";  // /restful
+             location.href="/s11/list";  // /restful
           })
         .catch(function(error){
               console.log("error", error);

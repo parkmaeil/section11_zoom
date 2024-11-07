@@ -1,6 +1,6 @@
 function restProductDetails(product_number){
     // GET : http://localhost:8081/restful/api/products/{id}
-    fetch("http://localhost:8081/restful/api/products/"+product_number)
+    fetch("http://localhost:8081/s11/api/products/"+product_number)
     .then(response=> response.json())
     .then(function(product){
       let productDetails=document.getElementById("productDetails");

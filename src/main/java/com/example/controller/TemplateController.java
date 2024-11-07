@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import com.example.entity.Criteria;
+import com.example.entity.PageMaker;
 import com.example.entity.Product;
 import com.example.service.TemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +68,29 @@ public class TemplateController {
     public ResponseEntity<?> update(@PathVariable int product_number, @RequestBody Product product ){
          service.update(product);
          return new ResponseEntity<>("success", HttpStatus.OK);
+    }
+
+    @PostMapping("/products/search")  // {"keyword":"세탁기"}
+    public ResponseEntity<?> search(@RequestBody Map<String, String> data){
+        // System.out.println(data.get("keyword"));
+        List<Product> pList=service.search(data.get("keyword"));
+        return new ResponseEntity<>(pList, HttpStatus.OK);
+    }
+
+    @PutMapping("/products/{product_number}/inventory")
+    public ResponseEntity<?> updateInventory(@PathVariable int  product_number,
+                                             @RequestBody Map<String, Integer> inventoryInfo){
+        service.updateInventory(product_number, inventoryInfo.get("inventory"));
+        return new ResponseEntity<>("Inventory updated successfully", HttpStatus.OK);
+    }
+
+    @PostMapping("/products/paging") // { "page":3 , "size" : 10}
+    public ResponseEntity<?> pageList(@RequestBody Criteria cri){
+        List<Product> list=service.pageList(cri);
+        PageMaker pm=new PageMaker();
+        pm.setCri(cri);
+        pm.setTotalCount(service.totalCount());
+        pm.setLists(list);
+        return new ResponseEntity<>(pm, HttpStatus.OK);
     }
 }
